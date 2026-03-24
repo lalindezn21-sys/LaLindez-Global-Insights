@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaLindez Stratagem Group</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #000;
+            margin: 0;
+            padding: 0;
+        }
+        .black-section {
+            background: #000;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            min-height: 100vh;
+            width: 100%;
+        }
+        .ticker {
+            background: #000;
+            border-bottom: 1px solid #fff;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker-content {
+            display: inline-flex;
+            animation: scroll 120s linear infinite;
+        }
+        .ticker-item {
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .ticker-item .symbol {
+            color: #888;
+            font-weight: bold;
+        }
+        .ticker-item .price {
+            color: #fff;
+            font-weight: 600;
+        }
+        .ticker-item .change.positive {
+            color: #27ae60;
+        }
+        .ticker-item .change.negative {
+            color: #e74c3c;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-75%); }
+        }
+        .dashed-line-container {
+            position: relative;
+            margin-top: 20px;
+            width: 100%;
+        }
+        .dashed-line {
+            border-top: 1px dashed #fff;
+            width: 100%;
+        }
+        .line-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #000;
+            color: #fff;
+            padding: 0 30px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        .white-content {
+            background: #fff;
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .stacked-text {
+            font-family: 'Arial Black', 'Impact', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: #000;
+            text-align: center;
+            line-height: 1.2;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transform: scaleX(1.6);
+            transform-origin: center;
+        }
+        .word {
+            display: block;
+            padding: 10px 20px;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .word:hover {
+            background: #000;
+            color: #fff;
+        }
+        .description {
+            font-family: 'Arial', sans-serif;
+            font-size: 0.6rem;
+            color: #333;
+            text-align: center;
+            max-width: 600px;
+            line-height: 1.4;
+            margin: 20px auto 0;
+        }
+        .bottom-dashed-container {
+            position: relative;
+            margin-top: 60px;
+            width: 100%;
+        }
+        .bottom-dashed-line {
+            border-top: 1px dashed #000;
+            width: 100%;
+        }
+        .bottom-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            color: #000;
+            padding: 0 20px;
+            font-family: 'Arial Black', 'Impact', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        .stocks-text {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #000;
+            text-align: center;
+            margin-top: 30px;
+            font-weight: 600;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            margin: 15px 0 0 0;
+        }
+        .nav-left, .nav-right {
+            display: flex;
+            gap: 60px;
+        }
+        .nav-link {
+            font-family: 'Arial Black', 'Impact', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 900;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transform: scaleX(1.3);
+            transform-origin: center;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+        .nav-link:hover {
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="black-section">
+        <div class="ticker">
+            <div class="ticker-content" id="tickerContent">
+                <!-- Stock data will be loaded here -->
+            </div>
+        </div>
+        <div class="nav-links">
+            <div class="nav-left">
+                <a href="#" class="nav-link">Communication</a>
+                <a href="#" class="nav-link">Intelligence</a>
+            </div>
+            <div class="nav-right">
+                <a href="#" class="nav-link">Resources</a>
+                <a href="#" class="nav-link">Applications</a>
+            </div>
+        </div>
+
+        <div class="dashed-line-container">
+            <div class="dashed-line"></div>
+            <div class="line-text">LaLindez Global Insights</div>
+        </div>
+    </div>
+
+    <div class="white-content">
+        <div class="stacked-text">
+            <div class="word">Reward</div>
+            <div class="word">Risk</div>
+            <div class="word">Insight</div>
+            <div class="word">Trend</div>
+        </div>
+        <div class="description">
+            LaLindez Global Insights® is a market intelligence and analytics firm with operations in New York, France, and Los Angeles. Our platform delivers real‑time market clarity and strategic insight to organizations worldwide. We do not provide financial advisory services or investment guidance; we empower teams with information, not instructions.
+        </div>
+        <div class="bottom-dashed-container">
+            <div class="bottom-dashed-line"></div>
+            <div class="bottom-text">What are</div>
+        </div>
+        <div class="stocks-text">Stocks</div>
+    </div>
+
+    <script>
+        // REPLACE WITH YOUR API KEY from alphavantage.co (free)
+        const API_KEY = 'UIIQQQSA5VXI6ZJM';
+        
+        const symbols = ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'TSLA', 'NVDA', 'META', 'NFLX', 'AMD', 'INTC', 'JPM', 'V', 'DIS', 'UBER', 'COIN', 'PLTR', 'SNOW', 'CRM', 'ADBE', 'PYPL'];
+        
+        async function fetchStockData(symbol) {
+            try {
+                const response = await fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${API_KEY}`);
+                const data = await response.json();
+                const quote = data['Global Quote'];
+                if (quote) {
+                    return {
+                        symbol: quote['01. symbol'],
+                        price: parseFloat(quote['05. price']).toFixed(2),
+                        change: parseFloat(quote['10. change percent']).toFixed(2)
+                    };
+                }
+            } catch (error) {
+                console.error('Error fetching stock data:', error);
+            }
+            return null;
+        }
+        
+        function createTickerItem(stock) {
+            const changeClass = stock.change >= 0 ? 'positive' : 'negative';
+            const changeSign = stock.change >= 0 ? '+' : '';
+            return `
+                <div class="ticker-item">
+                    <span class="symbol">${stock.symbol}</span>
+                    <span class="price">${stock.price}</span>
+                    <span class="change ${changeClass}">${changeSign}${stock.change}%</span>
+                </div>
+            `;
+        }
+        
+        async function loadTicker() {
+            const tickerContent = document.getElementById('tickerContent');
+            let html = '';
+            
+            // Show all 20 stocks
+            const allStocks = [
+                {symbol: 'AAPL', price: '178.42', change: 1.24},
+                {symbol: 'GOOGL', price: '141.80', change: -0.56},
+                {symbol: 'MSFT', price: '378.91', change: 2.11},
+                {symbol: 'AMZN', price: '155.33', change: 0.89},
+                {symbol: 'TSLA', price: '242.19', change: -1.45},
+                {symbol: 'NVDA', price: '495.22', change: 3.67},
+                {symbol: 'META', price: '312.45', change: 1.02},
+                {symbol: 'NFLX', price: '445.89', change: -0.33},
+                {symbol: 'AMD', price: '128.76', change: 2.45},
+                {symbol: 'INTC', price: '43.21', change: -0.78},
+                {symbol: 'JPM', price: '145.67', change: 0.45},
+                {symbol: 'V', price: '267.89', change: 1.12},
+                {symbol: 'DIS', price: '89.45', change: -0.23},
+                {symbol: 'UBER', price: '78.92', change: 2.34},
+                {symbol: 'COIN', price: '156.78', change: -2.11},
+                {symbol: 'PLTR', price: '34.56', change: 5.67},
+                {symbol: 'SNOW', price: '145.23', change: 1.89},
+                {symbol: 'CRM', price: '234.56', change: -0.45},
+                {symbol: 'ADBE', price: '478.90', change: 1.23},
+                {symbol: 'PYPL', price: '67.89', change: -1.34}
+            ];
+            allStocks.forEach(stock => {
+                html += createTickerItem(stock);
+            });
+            
+            // Duplicate 4 times for long seamless loop
+            tickerContent.innerHTML = html + html + html + html;
+        }
+        
+        loadTicker();
+        
+        // Refresh every 60 seconds if using real API
+        if (API_KEY !== 'YOUR_API_KEY_HERE') {
+            setInterval(loadTicker, 60000);
+        }
+    </script>
+</body>
+</html>
